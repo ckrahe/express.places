@@ -6,13 +6,15 @@ let appContext = {
         year: 2020
     },
     db: {
-        host : process.env.DB_HOST || 'localhost',
-        port : process.env.DB_PORT || 27017
+        host: process.env.DB_HOST || 'localhost',
+        port: process.env.DB_PORT || 27017,
+        name: 'geo'
     },
     web: {
         port: normalizePort(process.env.PORT || '3000')
     }
 };
+appContext.db.url = `mongodb://${appContext.db.host}:${appContext.db.port}`;
 
 /**
  * Normalize a port into a number, string, or false.
