@@ -1,18 +1,21 @@
 const express = require('express');
+const appContext = require('../appContext');
 const router = express.Router();
 
-/* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { app: appContext.app });
 });
+
 router.get('/about', function(req, res) {
-  res.render('about', { title: 'Express' });
+  res.render('about', { app: appContext.app });
 });
+
 router.get('/contact', function(req, res) {
-  res.render('contact', { title: 'Express' });
+  res.render('contact', { app: appContext.app });
 });
+
 router.get('/post', function(req, res) {
-  res.render('post', { title: 'Express' });
+  res.render('post', { app: appContext.app });
 });
 
 module.exports = router;
