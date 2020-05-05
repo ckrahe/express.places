@@ -68,39 +68,39 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <form name="sentMessage" id="contactForm" novalidate>
+        <form name="sentMessage" id="contactForm" action="/add" method="POST" novalidate>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Name</label>
-              <label for="name"></label><input type="text" class="form-control" placeholder="Name of place" id="name" required data-validation-required-message="Please enter the place name.">
+              <label for="name"></label><input type="text" class="form-control" placeholder="Name of place" name="name" id="name" required data-validation-required-message="Please enter the place name.">
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Country</label>
-              <label for="country"></label><input type="text" class="form-control" placeholder="Country" id="country" required data-validation-required-message="Please enter the country name.">
+              <label for="country"></label><input type="text" class="form-control" placeholder="Country" name="country" id="country" required data-validation-required-message="Please enter the country name.">
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Summary</label>
-              <label for="summary"></label><input type="text" class="form-control" placeholder="One-line summary (optional)" id="summary">
+              <label for="summary"></label><input type="text" class="form-control" placeholder="One-line summary (optional)" name="summary" id="summary">
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Description</label>
-              <label for="description"></label><textarea rows="5" class="form-control" placeholder="Description" id="description" required data-validation-required-message="Please enter a description."></textarea>
+              <label for="description"></label><textarea rows="5" class="form-control" placeholder="Description" name="description" id="description" required data-validation-required-message="Please enter a description."></textarea>
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <br>
           <div id="success"></div>
           <div class="form-group">
-            <button type="submit" class="btn btn-primary" id="sendMessageButton">Add</button>
+            <button class="btn btn-primary" id="sendMessageButton">Add</button>
           </div>
         </form>
       </div>
@@ -152,7 +152,6 @@
 
   <!-- Contact Form JavaScript -->
   <script src="js/jqBootstrapValidation.js"></script>
-  <script src="js/contact_me.js"></script>
 
   <!-- Custom scripts for this template -->
   <script src="js/clean-blog.min.js"></script>
