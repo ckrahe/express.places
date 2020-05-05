@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
   }());
 });
 
-router.get('/post/:id', function(req, res) {
+router.get('/place/:id', function(req, res) {
   const id = req.params.id;
   (async function mongo() {
     let client;
@@ -31,7 +31,7 @@ router.get('/post/:id', function(req, res) {
       const db = client.db(appContext.db.name);
       const collection = await db.collection('places');
       const place = await collection.findOne({ _id: new ObjectID(id) });
-      res.render('post', { app: appContext.app, place: place });
+      res.render('viewPlace', { app: appContext.app, place: place });
     } catch (err) {
       debug(err.stack);
     }
