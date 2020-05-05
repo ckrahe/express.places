@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 
 const app = express();
 
@@ -25,7 +24,6 @@ app.use('/js', express.static(path.join(__dirname,'node_modules/jquery/dist')));
 app.use('/webfonts', express.static(path.join(__dirname,'node_modules/@fortawesome/fontawesome-free/webfonts')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

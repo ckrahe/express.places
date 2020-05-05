@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>About - <%= app.name %></title>
+  <title>Add a place - <%= app.name %></title>
 
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -38,9 +38,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/">Home</a>
           </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/add">Add</a>
-            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/add">Add</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/about">About</a>
           </li>
@@ -56,8 +56,8 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1>About <%= app.name %></h1>
-            <span class="subheading"><%= app.summary %></span>
+            <h1>Add a place</h1>
+            <span class="subheading">The world is full of great places. Tell us about one of them.</span>
           </div>
         </div>
       </div>
@@ -68,22 +68,41 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <p>This web app, express.places, lets you browse some memorable places I've been around the world.
-          I built it as a simple test harness for deploying an application to multiple environments like
-          <a href="https://aws.amazon.com/" target="_blank">Amazon Web Services</a>,
-          <a href="https://www.docker.com/" target="_blank">Docker</a>, and
-          <a href="https://kubernetes.io/" target="_blank">Kubernetes</a>.
-        </p>
-        <p>Building blocks include
-          <a href="https://expressjs.com/" target="_blank">Express</a> on
-          <a href="https://nodejs.org/en/" target="_blank">Node.js</a>,
-          <a href="https://www.mongodb.com/" target="_blank">MongoDB</a>, and the attractive
-          <a href="https://github.com/BlackrockDigital/startbootstrap-clean-blog" target="_blank">Clean Blog
-            template</a> from Start Bootstrap.
-        </p>
-        <p>View the code in my
-          <a href="https://github.com/ckrahe/express.places" target="_blank">express.places GitHub repo</a>.
-        </p>
+        <form name="sentMessage" id="contactForm" action="/add" method="POST" novalidate>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Name</label>
+              <label for="name"></label><input type="text" class="form-control" placeholder="Name of place" name="name" id="name" required data-validation-required-message="Please enter the place name.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Country</label>
+              <label for="country"></label><input type="text" class="form-control" placeholder="Country" name="country" id="country" required data-validation-required-message="Please enter the country name.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Summary</label>
+              <label for="summary"></label><input type="text" class="form-control" placeholder="One-line summary (optional)" name="summary" id="summary">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Description</label>
+              <label for="description"></label><textarea rows="5" class="form-control" placeholder="Description" name="description" id="description" required data-validation-required-message="Please enter a description."></textarea>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <div class="form-group">
+            <button class="btn btn-primary" id="sendMessageButton">Add</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -130,6 +149,9 @@
   <!-- Bootstrap core JavaScript -->
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="js/jqBootstrapValidation.js"></script>
 
   <!-- Custom scripts for this template -->
   <script src="js/clean-blog.min.js"></script>
