@@ -43,8 +43,8 @@ router.get('/about', function(req, res) {
   res.render('about', { app: appContext.app });
 });
 
-router.get('/contact', function(req, res) {
-  res.render('contact', { app: appContext.app });
+router.get('/add', function(req, res) {
+  res.render('addPlace', { app: appContext.app });
 });
 
 module.exports = router;
