@@ -68,22 +68,36 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <% for (let i=0; i < places.length; i++) { %>
-          <% if (i > 0) { %>
-            <hr>
+        <% let nbrPlaces = places.length; %>
+        <% if (nbrPlaces > 0) { %>
+          <% for (let i=0; i < places.length; i++) { %>
+            <% if (i > 0) { %>
+              <hr>
+            <% } %>
+            <div class="post-preview">
+              <a href="place/<%= places[i]._id %>">
+                <h2 class="post-title">
+                  <%= places[i].name %>
+                </h2>
+                <h3 class="post-subtitle">
+                  <%= places[i].summary %>
+                </h3>
+              </a>
+              <p class="post-meta">
+                <a href="#"><%= places[i].country %></a>
+              </p>
+            </div>
           <% } %>
+        <% } else { %>
           <div class="post-preview">
-            <a href="place/<%= places[i]._id %>">
+            <a href="add">
               <h2 class="post-title">
-                <%= places[i].name %>
+                Add a place
               </h2>
               <h3 class="post-subtitle">
-                <%= places[i].summary %>
+                No places to list. Add one now.
               </h3>
             </a>
-            <p class="post-meta">
-              <a href="#"><%= places[i].country %></a>
-            </p>
           </div>
         <% } %>
       </div>
