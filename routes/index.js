@@ -65,6 +65,22 @@ router.post('/add', function(req, res) {
     desc: desc
   };
 
+  // Validate
+  let errors = [];
+  if (placeData.name.length === 0) {
+    errors.push("Name is required.");
+  }
+  if (placeData.country.length === 0) {
+    errors.push("Country is required.");
+  }
+  if (placeData.desc.length === 0) {
+    errors.push("Description is required.");
+  }
+  if (errors.length > 0) {
+    res.render('addPlace', { app: appContext.app, place: placeData, problem: true, message: errors.join(' ') });
+    return;
+  }
+
   // Add
   (async function mongo() {
     let client;
@@ -73,8 +89,13 @@ router.post('/add', function(req, res) {
           {useNewUrlParser: true, useUnifiedTopology: true});
       const db = client.db(appContext.db.name);
       const collection = await db.collection('places');
-      const result = await collection.insertOne(placeData);
-      res.render('viewPlace', { app: appContext.app, place: result.ops[0] });
+      const existingPlace = await collection.findOne({ name: placeData.name });
+      if (!existingPlace) {
+        const result = await collection.insertOne(placeData);
+        res.render('viewPlace', { app: appContext.app, place: result.ops[0] });
+      } else {
+        res.render('addPlace', { app: appContext.app, place: placeData, problem: true, message: "A place with this name already exists" })
+      }
     } catch (err) {
       debug(err.stack);
     }

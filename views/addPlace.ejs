@@ -56,8 +56,8 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1>Add a place</h1>
-            <span class="subheading">The world is full of great places. Tell us about one of them.</span>
+            <h1><%= typeof problem !== 'undefined' ? 'Problem!' : 'Add a place' %></h1>
+            <span class="subheading"><%= typeof message !== 'undefined' ? message : 'The world is full of great places. Tell us about one of them.' %></span>
           </div>
         </div>
       </div>
@@ -72,28 +72,37 @@
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Name</label>
-              <label for="name"></label><input type="text" class="form-control" placeholder="Name of place" name="name" id="name" required data-validation-required-message="Please enter the place name.">
+              <label for="name"></label>
+              <input type="text" class="form-control" placeholder="Name of place" name="name" id="name" value="<%= typeof place !== 'undefined' ? place.name : '' %>">
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Country</label>
-              <label for="country"></label><input type="text" class="form-control" placeholder="Country" name="country" id="country" required data-validation-required-message="Please enter the country name.">
+              <label for="country"></label>
+              <input type="text" class="form-control" placeholder="Country" name="country" id="country" value="<%= typeof place !== 'undefined' ? place.country : '' %>">
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Summary</label>
-              <label for="summary"></label><input type="text" class="form-control" placeholder="One-line summary (optional)" name="summary" id="summary">
+              <label for="summary"></label>
+              <input type="text" class="form-control" placeholder="One-line summary (optional)" name="summary" id="summary" value="<%= typeof place !== 'undefined' ? place.summary : '' %>">
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Description</label>
-              <label for="description"></label><textarea rows="5" class="form-control" placeholder="Description" name="description" id="description" required data-validation-required-message="Please enter a description."></textarea>
+              <label for="description"></label>
+              <% if ((typeof place !== 'undefined') && (place.desc.length > 0)) { %>
+                <textarea rows="5" class="form-control" placeholder="Description" name="description" id="description"
+                ><% for (let i=0; i < place.desc.length; i++) { %><%= `${ i > 0 ? '\r\n' : ''}${ place.desc[i] }` %><% } %></textarea>
+              <% } else { %>
+                <textarea rows="5" class="form-control" placeholder="Description" name="description" id="description"></textarea>
+              <% } %>
               <p class="help-block text-danger"></p>
             </div>
           </div>
