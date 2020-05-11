@@ -5,7 +5,7 @@ MAINTAINER Chris Krahe
 ENV NODE_ENV=development
 ENV PORT=3000
 ENV DB_HOST=placesdb
-ENV DB_PORT=20717
+ENV DB_PORT=27017
 
 COPY    . /var/www
 WORKDIR /var/www
