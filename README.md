@@ -3,6 +3,7 @@ Web UI for places app
 
 ## Pre-requisites
 * MongoDB instance or container
+* Mongo container has network alias _placesdb_ (default)
 * OK to store documents in _geo_ db, _places_ collection
 
 ## Standard deployment 
@@ -11,8 +12,9 @@ Web UI for places app
 1. npm install
 1. npm start
 
-## Docker deployment
+## Docker network deployment
 
 1. Modify Dockerfile if needed
 1. docker build ...
-1. docker run --name placesapp ...
+1. docker run ...
+1. docker network add ... --alias placesapp ...
