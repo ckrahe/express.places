@@ -1,7 +1,7 @@
 # express.places
 Web UI for places app
 
-## Pre-requisites
+## Prerequisites
 * MongoDB instance or container
 * Mongo container has network alias _placesdb_ (default)
 * OK to store documents in _geo_ db, _places_ collection
@@ -14,10 +14,11 @@ Web UI for places app
 
 ## Docker network deployment
 
-1. Modify Dockerfile if needed
-1. docker build ...
-1. docker run ... { -p 3000:3000 } ...
+1. docker build ... { --build-arg PORT_ARG=_port_ } { --build-arg _name_=_value_} ...
+1. docker run ... { -p _port_:_port_ } ...
 1. docker network add ... --alias placesapp ...
+
+_See Dockerfile for other build-args and defaults_
 
 ## Use
 
