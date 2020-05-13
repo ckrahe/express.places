@@ -16,7 +16,7 @@ let appContext = {
         port: normalizePort(process.env.PORT || '3000')
     }
 };
-appContext.db.url = `mongodb://${appContext.db.host}:${appContext.db.port}`;
+appContext.db.url = `mongodb://${appContext.db.host}:${appContext.db.port}/${appContext.db.name}`;
 
 /**
  * Normalize a port into a number, string, or false.
