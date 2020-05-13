@@ -1,5 +1,5 @@
 # express.places
-Web UI for places app
+Web UI for Places app
 
 ## Prerequisites
 * MongoDB instance or container
@@ -16,7 +16,7 @@ Web UI for places app
 
 1. docker build ... { --build-arg PORT_ARG=_port_ } { --build-arg _name_=_value_} ...
 1. docker run ... { -p _port_:_port_ } ...
-1. docker network add ... --alias placesapp ...
+1. docker network connect ... --alias placesapp ...
 
 _See Dockerfile for other build-args and defaults_
 
