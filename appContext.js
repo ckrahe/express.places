@@ -6,6 +6,8 @@ let appContext = {
         year: 2020
     },
     db: {
+        user: process.env.DB_USER || 'appUser',
+        pwd:  process.env.DB_PWD  || '******',
         host: process.env.DB_HOST || 'localhost',
         port: process.env.DB_PORT || 27017,
         name: 'geo'

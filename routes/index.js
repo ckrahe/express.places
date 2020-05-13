@@ -9,7 +9,9 @@ router.get('/', function(req, res) {
     let client;
     try {
       client = await MongoClient.connect(appContext.db.url,
-          {useNewUrlParser: true, useUnifiedTopology: true});
+          {
+            auth: { user: appContext.db.user, password: appContext.db.pwd },
+            useNewUrlParser: true, useUnifiedTopology: true});
       const db = client.db(appContext.db.name);
       const collection = await db.collection('places');
       const places = await collection.find().toArray();
