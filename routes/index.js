@@ -8,10 +8,10 @@ router.get('/', function(req, res) {
   (async function mongo() {
     let client;
     try {
-      client = await MongoClient.connect(appContext.db.url,
-          {
+      client = await MongoClient.connect(appContext.db.url, {
             auth: { user: appContext.db.user, password: appContext.db.pwd },
-            useNewUrlParser: true, useUnifiedTopology: true});
+            useNewUrlParser: true, useUnifiedTopology: true
+      });
       const db = client.db(appContext.db.name);
       const collection = await db.collection('places');
       const places = await collection.find().toArray();
@@ -28,8 +28,10 @@ router.get('/place/:id', function(req, res) {
   (async function mongo() {
     let client;
     try {
-      client = await MongoClient.connect(appContext.db.url,
-          {useNewUrlParser: true, useUnifiedTopology: true});
+      client = await MongoClient.connect(appContext.db.url, {
+        auth: { user: appContext.db.user, password: appContext.db.pwd },
+        useNewUrlParser: true, useUnifiedTopology: true
+      });
       const db = client.db(appContext.db.name);
       const collection = await db.collection('places');
       const place = await collection.findOne({ _id: new ObjectID(id) });
@@ -87,8 +89,10 @@ router.post('/add', function(req, res) {
   (async function mongo() {
     let client;
     try {
-      client = await MongoClient.connect(appContext.db.url,
-          {useNewUrlParser: true, useUnifiedTopology: true});
+      client = await MongoClient.connect(appContext.db.url, {
+        auth: { user: appContext.db.user, password: appContext.db.pwd },
+        useNewUrlParser: true, useUnifiedTopology: true
+      });
       const db = client.db(appContext.db.name);
       const collection = await db.collection('places');
       const existingPlace = await collection.findOne({ name: placeData.name });
