@@ -6,13 +6,15 @@ Web UI for Places app
 * Mongo container has network alias _placesdb_ (default)
 * OK to store documents in _geo_ db, _places_ collection
 
-## Docker Compose deployment
+## Deployment methods
+
+### Docker Compose
 
 This is the easiest deployment method, and it's done not here but in docker.places.
 It assembles the Docker network comprised of each Places container, relying on the
 Dockerfile and supporting files within each. Check it out.
 
-## Manual network deployment
+### Manual network
 
 I used this method when I was learning about Docker networks but before I leveraged Docker Compose.
 
@@ -20,7 +22,7 @@ I used this method when I was learning about Docker networks but before I levera
 1. docker run ... { -p _port_:_port_ } ...
 1. docker network connect ... --alias placesapp ...
 
-## Container customization
+### Container customization
 
 This method, the one I created first, is the most labor-intensive.  It doesn't use Dockerfile at all, instead
 relying on you to first build a container from the standard node image.
